@@ -7,6 +7,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\ServiceProvider;
 use Modules\Activity\Console\PurgeActivity;
+use Modules\Forms\Components\Fields\Number;
 
 class ActivityServiceProvider extends ServiceProvider
 {
@@ -26,7 +27,6 @@ class ActivityServiceProvider extends ServiceProvider
     {
         $this->registerTranslations();
         $this->registerConfig();
-        $this->registerViews();
         $this->registerFactories();
         $this->registerCommands();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
@@ -52,7 +52,7 @@ class ActivityServiceProvider extends ServiceProvider
         Settings::register('activity.lifetime',[
             'Title' => 'Activity life span',
             'Section' => 'Activity Logging',
-            'type' => 'number',
+            'type' => Number::class,
             'validation' => 'required|integer'
         ]);
 
@@ -91,28 +91,6 @@ class ActivityServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../Config/config.php', 'activity'
         );
-    }
-
-    /**
-     * Register views.
-     *
-     * @return void
-     */
-    public function registerViews()
-    {
-        $themePaths = $this->app->make('view.finder')->getThemesPublishPaths('activity');
-
-        $sourcePath = __DIR__.'/../Resources/views';
-
-        foreach($themePaths as $path => $namespace){
-            $this->publishes([
-                $sourcePath => $path
-            ],$namespace);
-        }
-
-        $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/activity';
-        }, \Config::get('view.paths')), [$sourcePath]), 'activity');
     }
 
     /**
