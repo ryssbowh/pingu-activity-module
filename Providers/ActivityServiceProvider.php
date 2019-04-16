@@ -7,7 +7,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\ServiceProvider;
 use Modules\Activity\Console\PurgeActivity;
-use Modules\Forms\Components\Fields\Number;
+use Modules\Forms\Fields\Number;
 
 class ActivityServiceProvider extends ServiceProvider
 {
