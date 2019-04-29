@@ -1,5 +1,5 @@
 {
-    "name": "eskimo/activity",
+    "name": "pingu/activity-module",
     "description": "Saves user's activity",
     "type" : "asgard-module",
     "authors": [
