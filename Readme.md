@@ -1,7 +1,7 @@
 # Activity Module
 
 ## TODO
-[ ] Add user reference when user module is fixed
+- [ ] Add user reference when user module is fixed
 
 ## v1.0.5 wrote readme
 
