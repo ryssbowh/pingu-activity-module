@@ -1,0 +1,18 @@
+{
+    "name": "Activity",
+    "alias": "activity",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 2,
+    "providers": [
+        "Modules\\Activity\\Providers\\ActivityServiceProvider"
+    ],
+    "aliases": {
+        "Activity":"Modules\\Activity\\Facades\\Activity"
+    },
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
