@@ -49,13 +49,6 @@ class ActivityServiceProvider extends ServiceProvider
             }
         });
 
-        Settings::register('activity.lifetime',[
-            'Title' => 'Activity life span',
-            'Section' => 'Activity Logging',
-            'type' => Number::class,
-            'validation' => 'required|integer'
-        ]);
-
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
             $schedule->command('activity:purge')->daily();
