@@ -2,7 +2,9 @@
 
 namespace Pingu\Activity\Database\Seeders;
 
+use Illuminate\Database\Seeder;
 use Pingu\Forms\Fields\Number;
+use Pingu\Permissions\Entities\Permission;
 use Settings;
 
 class ActivityDatabaseSeeder extends Seeder
@@ -20,5 +22,8 @@ class ActivityDatabaseSeeder extends Seeder
             'type' => Number::class,
             'validation' => 'required|integer'
         ]);
+
+        Permission::findOrCreate(['name' => 'view activity', 'section' => 'Activity']);
+        Permission::findOrCreate(['name' => 'purge activity', 'section' => 'Activity']);
     }
 }
