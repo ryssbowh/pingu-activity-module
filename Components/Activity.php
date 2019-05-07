@@ -1,9 +1,9 @@
 <?php
-namespace Modules\Activity\Components;
+namespace Pingu\Activity\Components;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Modules\Activity\Entities\Activity as ActivityModel;
+use Pingu\Activity\Entities\Activity as ActivityModel;
 use Auth;
 
 class Activity

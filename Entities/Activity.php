@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\Activity\Entities;
+namespace Pingu\Activity\Entities;
 
-use Modules\Core\Entities\BaseModel;
+use Pingu\Core\Entities\BaseModel;
 
 class Activity extends BaseModel
 {

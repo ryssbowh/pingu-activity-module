@@ -1,5 +1,5 @@
 <?php
-namespace Modules\Activity\Facades;
+namespace Pingu\Activity\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

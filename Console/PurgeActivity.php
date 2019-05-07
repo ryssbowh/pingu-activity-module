@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Activity\Console;
+namespace Pingu\Activity\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;

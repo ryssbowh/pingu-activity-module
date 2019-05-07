@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Activity\Http\Controllers;
+namespace Pingu\Activity\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Core\Http\Controllers\Controller;
+use Pingu\Core\Http\Controllers\Controller;
 
 class ActivityController extends Controller
 {

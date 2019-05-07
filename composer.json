@@ -11,7 +11,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\Activity\\Providers\\ActivityServiceProvider"
+                "Pingu\\Activity\\Providers\\ActivityServiceProvider"
             ],
             "aliases": {
                 
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Activity\\": ""
+            "Pingu\\Activity\\": ""
         }
     }
 }

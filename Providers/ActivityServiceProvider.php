@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Activity\Providers;
+namespace Pingu\Activity\Providers;
 
 use Activity,Event,Settings;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\ServiceProvider;
-use Modules\Activity\Console\PurgeActivity;
-use Modules\Forms\Fields\Number;
+use Pingu\Activity\Console\PurgeActivity;
+use Pingu\Forms\Fields\Number;
 
 class ActivityServiceProvider extends ServiceProvider
 {
@@ -32,19 +32,19 @@ class ActivityServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
         Event::listen(['eloquent.created: *'], function($event, $model) {
-            if(get_class($model[0]) != "Modules\Activity\Entities\Activity"){
+            if(get_class($model[0]) != "Pingu\Activity\Entities\Activity"){
                 Activity::log('created', $model[0]);
             }
         });
 
         Event::listen(['eloquent.updated: *'], function($event, $model) {
-            if(get_class($model[0]) != "Modules\Activity\Entities\Activity"){
+            if(get_class($model[0]) != "Pingu\Activity\Entities\Activity"){
                 Activity::log('updated', $model[0]);
             }
         });
 
         Event::listen(['eloquent.deleted: *'], function($event, $model) {
-            if(get_class($model[0]) != "Modules\Activity\Entities\Activity"){
+            if(get_class($model[0]) != "Pingu\Activity\Entities\Activity"){
                 Activity::log('deleted', $model[0]);
             }
         });
@@ -69,13 +69,15 @@ class ActivityServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('activity', \Modules\Activity\Components\Activity::class);
+        $this->app->bind('activity', \Pingu\Activity\Components\Activity::class);
     }
 
     public function registerCommands(){
-        $this->commands([
-            PurgeActivity::class
-        ]);
+        if($this->app()->runningInConsole()){
+            $this->commands([
+                PurgeActivity::class
+            ]);
+        }
     }
 
     /**

@@ -6,10 +6,10 @@
     "active": 1,
     "order": 2,
     "providers": [
-        "Modules\\Activity\\Providers\\ActivityServiceProvider"
+        "Pingu\\Activity\\Providers\\ActivityServiceProvider"
     ],
     "aliases": {
-        "Activity":"Modules\\Activity\\Facades\\Activity"
+        "Activity":"Pingu\\Activity\\Facades\\Activity"
     },
     "files": [
         "start.php"
