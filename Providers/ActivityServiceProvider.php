@@ -66,7 +66,7 @@ class ActivityServiceProvider extends ServiceProvider
     }
 
     public function registerCommands(){
-        if($this->app()->runningInConsole()){
+        if($this->app->runningInConsole()){
             $this->commands([
                 PurgeActivity::class
             ]);
