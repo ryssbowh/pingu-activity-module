@@ -18,7 +18,7 @@ class ActivityDatabaseSeeder extends Seeder
     {
         Settings::register('activity.lifetime',[
             'Title' => 'Activity life span',
-            'Section' => 'Activity Logging',
+            'Section' => 'core',
             'type' => Number::class,
             'validation' => 'required|integer'
         ]);
