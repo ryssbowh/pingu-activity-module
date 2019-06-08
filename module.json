@@ -11,8 +11,6 @@
     "aliases": {
         "Activity":"Pingu\\Activity\\Facades\\Activity"
     },
-    "files": [
-        "start.php"
-    ],
+    "files": [],
     "requires": []
 }

@@ -18,8 +18,6 @@ class ActivityServiceProvider extends ServiceProvider
      */
     protected $defer = false;
 
-    protected $modelFolder = 'Entities';
-
     /**
      * Boot the application events.
      *
@@ -27,7 +25,6 @@ class ActivityServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerModelSlugs();
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerFactories();
@@ -74,14 +71,6 @@ class ActivityServiceProvider extends ServiceProvider
                 PurgeActivity::class
             ]);
         }
-    }
-
-    /**
-     * Registers all the slugs for this module's models
-     */
-    public function registerModelSlugs()
-    {
-        \ModelRoutes::registerSlugsFromPath(realpath(__DIR__.'/../'.$this->modelFolder));
     }
 
     /**
@@ -137,3 +126,4 @@ class ActivityServiceProvider extends ServiceProvider
         return ['activity'];
     }
 }
+
