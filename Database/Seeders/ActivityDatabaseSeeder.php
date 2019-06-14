@@ -3,7 +3,8 @@
 namespace Pingu\Activity\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Pingu\Forms\Fields\Number;
+use Pingu\Forms\Support\Fields\NumberInput;
+use Pingu\Forms\Support\Types\Integer;
 use Pingu\Permissions\Entities\Permission;
 use Settings;
 
@@ -19,7 +20,8 @@ class ActivityDatabaseSeeder extends Seeder
         Settings::register('activity.lifetime',[
             'Title' => 'Activity life span',
             'Section' => 'core',
-            'type' => Number::class,
+            'field' => NumberInput::class,
+            'type' => Integer::class,
             'validation' => 'required|integer'
         ]);
 
