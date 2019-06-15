@@ -5,11 +5,11 @@ namespace Pingu\Activity\Providers;
 use Activity,Event,Settings;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Database\Eloquent\Factory;
-use Illuminate\Support\ServiceProvider;
 use Pingu\Activity\Console\PurgeActivity;
+use Pingu\Core\Support\ModuleServiceProvider;
 use Pingu\Forms\Fields\Number;
 
-class ActivityServiceProvider extends ServiceProvider
+class ActivityServiceProvider extends ModuleServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -27,11 +27,11 @@ class ActivityServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerModelSlugs();
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerFactories();
         $this->registerCommands();
+        $this->registerModelSlugs(__DIR__.'/../'.$this->modelFolder);
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
         Event::listen(['eloquent.created: *'], function($event, $model) {
@@ -74,14 +74,6 @@ class ActivityServiceProvider extends ServiceProvider
                 PurgeActivity::class
             ]);
         }
-    }
-
-    /**
-     * Registers all the slugs for this module's models
-     */
-    public function registerModelSlugs()
-    {
-        \ModelRoutes::registerSlugsFromPath(realpath(__DIR__.'/../'.$this->modelFolder));
     }
 
     /**
