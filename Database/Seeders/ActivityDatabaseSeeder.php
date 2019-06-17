@@ -17,13 +17,13 @@ class ActivityDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Settings::register('activity.lifetime',[
-            'Title' => 'Activity life span',
-            'Section' => 'core',
-            'field' => NumberInput::class,
-            'type' => Integer::class,
-            'validation' => 'required|integer'
-        ]);
+        // Settings::register('activity.lifetime',[
+        //     'Title' => 'Activity life span',
+        //     'Section' => 'core',
+        //     'field' => NumberInput::class,
+        //     'type' => Integer::class,
+        //     'validation' => 'required|integer'
+        // ]);
 
         Permission::findOrCreate(['name' => 'view activity', 'section' => 'Activity']);
         Permission::findOrCreate(['name' => 'purge activity', 'section' => 'Activity']);
