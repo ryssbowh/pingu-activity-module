@@ -69,11 +69,9 @@ class ActivityServiceProvider extends ModuleServiceProvider
     }
 
     public function registerCommands(){
-        if($this->app->runningInConsole()){
-            $this->commands([
-                PurgeActivity::class
-            ]);
-        }
+        $this->commands([
+            PurgeActivity::class
+        ]);
     }
 
     /**
