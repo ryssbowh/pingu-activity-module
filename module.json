@@ -3,7 +3,7 @@
     "alias": "activity",
     "description": "",
     "keywords": [],
-    "active": 0,
+    "active": 1,
     "order": 2,
     "providers": [
         "Pingu\\Activity\\Providers\\ActivityServiceProvider"
