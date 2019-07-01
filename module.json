@@ -1,9 +1,9 @@
 {
     "name": "Activity",
     "alias": "activity",
-    "description": "",
+    "description": "Records user activity on models",
     "keywords": [],
-    "active": 1,
+    "active": 0,
     "order": 2,
     "providers": [
         "Pingu\\Activity\\Providers\\ActivityServiceProvider"
