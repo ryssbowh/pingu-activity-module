@@ -4,6 +4,7 @@
     "description": "Records user activity on models",
     "keywords": [],
     "order": 2,
+    "core": 0,
     "providers": [
         "Pingu\\Activity\\Providers\\ActivityServiceProvider"
     ],
