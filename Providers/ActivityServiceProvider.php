@@ -32,7 +32,6 @@ class ActivityServiceProvider extends ModuleServiceProvider
         $this->registerFactories();
         $this->registerCommands();
         $this->registerModelSlugs(__DIR__.'/../'.$this->modelFolder);
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
         Event::listen(['eloquent.created: *'], function($event, $model) {
             if(get_class($model[0]) != "Pingu\Activity\Entities\Activity"){
