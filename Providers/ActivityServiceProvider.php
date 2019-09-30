@@ -18,8 +18,6 @@ class ActivityServiceProvider extends ModuleServiceProvider
      */
     protected $defer = false;
 
-    protected $modelFolder = 'Entities';
-
     /**
      * Boot the application events.
      *
@@ -31,7 +29,6 @@ class ActivityServiceProvider extends ModuleServiceProvider
         $this->registerConfig();
         $this->registerFactories();
         $this->registerCommands();
-        $this->registerModelSlugs(__DIR__.'/../'.$this->modelFolder);
 
         Event::listen(['eloquent.created: *'], function($event, $model) {
             if(get_class($model[0]) != "Pingu\Activity\Entities\Activity"){
