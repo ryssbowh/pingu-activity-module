@@ -8,7 +8,7 @@ use Pingu\Permissions\Entities\Permission;
 use Pingu\Settings\Entities\Settings as SettingsModel;
 use Pingu\Settings\Forms\Types\Integer;
 
-class S2019_08_06_171840659813_Install extends MigratableSeeder
+class S2019_08_06_171840659813_InstallActivity extends MigratableSeeder
 {
     use DisableForeignKeysTrait;
 
