@@ -17,14 +17,6 @@ class S2019_08_06_171840659813_Install extends MigratableSeeder
      */
     public function run(): void
     {
-        Settings::register('activity.lifetime',[
-            'Title' => 'Activity life span',
-            'Section' => 'core',
-            'field' => NumberInput::class,
-            'type' => Integer::class,
-            'validation' => 'required|integer'
-        ]);
-
         Permission::create(['name' => 'view activity', 'section' => 'Activity']);
         Permission::create(['name' => 'purge activity', 'section' => 'Activity']);
     }

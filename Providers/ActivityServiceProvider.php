@@ -12,13 +12,6 @@ use Pingu\Forms\Fields\Number;
 class ActivityServiceProvider extends ModuleServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
      * Boot the application events.
      *
      * @return void
@@ -31,27 +24,22 @@ class ActivityServiceProvider extends ModuleServiceProvider
         $this->registerCommands();
 
         Event::listen(['eloquent.created: *'], function($event, $model) {
-            if(get_class($model[0]) != "Pingu\Activity\Entities\Activity"){
-                Activity::log('created', $model[0]);
-            }
+            Activity::logModel('created', $model[0]);
         });
 
         Event::listen(['eloquent.updated: *'], function($event, $model) {
-            if(get_class($model[0]) != "Pingu\Activity\Entities\Activity"){
-                Activity::log('updated', $model[0]);
-            }
+            Activity::logModel('updated', $model[0]);
         });
 
         Event::listen(['eloquent.deleted: *'], function($event, $model) {
-            if(get_class($model[0]) != "Pingu\Activity\Entities\Activity"){
-                Activity::log('deleted', $model[0]);
-            }
+            Activity::logModel('deleted', $model[0]);
         });
 
-        $this->app->booted(function () {
-            $schedule = $this->app->make(Schedule::class);
-            $schedule->command('activity:purge')->daily();
+        Event::listen(['eloquent.restored: *'], function($event, $model) {
+            Activity::logModel('restored', $model[0]);
         });
+
+        \Cron::command('Purge activity', 'activity:purge')->daily();
     }
 
     /**
@@ -108,15 +96,5 @@ class ActivityServiceProvider extends ModuleServiceProvider
         if (! app()->environment('production')) {
             app(Factory::class)->load(__DIR__ . '/../Database/factories');
         }
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return ['activity'];
     }
 }

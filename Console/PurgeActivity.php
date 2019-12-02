@@ -21,7 +21,7 @@ class PurgeActivity extends Command
      *
      * @var string
      */
-    protected $description = 'Deletes all entries in activities table.';
+    protected $description = 'Deletes old entries in activities table.';
 
     /**
      * Create a new command instance.
@@ -40,7 +40,8 @@ class PurgeActivity extends Command
      */
     public function handle()
     {
-        Activity::purge();
+        $nb = Activity::purge();
+        $this->info("$nb logs have been deleted");
     }
 
     /**
