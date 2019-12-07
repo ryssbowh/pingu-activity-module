@@ -26,13 +26,13 @@ class S2019_08_06_171840659813_InstallActivity extends MigratableSeeder
      */
     public function down(): void
     {
-        if($perm = Permission::where('name', 'view activity')->first()){
+        if($perm = Permission::where('name', 'view activity')->first()) {
             $perm->delete();
         }
-        if($perm = Permission::where('name', 'purge activity')->first()){
+        if($perm = Permission::where('name', 'purge activity')->first()) {
             $perm->delete();
         }
-        if($set = SettingsModel::where('name', 'activity.lifetime')->first()){
+        if($set = SettingsModel::where('name', 'activity.lifetime')->first()) {
             $set->delete();
         }
     }

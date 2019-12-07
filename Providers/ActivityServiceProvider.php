@@ -23,21 +23,29 @@ class ActivityServiceProvider extends ModuleServiceProvider
         $this->registerFactories();
         $this->registerCommands();
 
-        Event::listen(['eloquent.created: *'], function($event, $model) {
-            Activity::logModel('created', $model[0]);
-        });
+        Event::listen(
+            ['eloquent.created: *'], function ($event, $model) {
+                Activity::logModel('created', $model[0]);
+            }
+        );
 
-        Event::listen(['eloquent.updated: *'], function($event, $model) {
-            Activity::logModel('updated', $model[0]);
-        });
+        Event::listen(
+            ['eloquent.updated: *'], function ($event, $model) {
+                Activity::logModel('updated', $model[0]);
+            }
+        );
 
-        Event::listen(['eloquent.deleted: *'], function($event, $model) {
-            Activity::logModel('deleted', $model[0]);
-        });
+        Event::listen(
+            ['eloquent.deleted: *'], function ($event, $model) {
+                Activity::logModel('deleted', $model[0]);
+            }
+        );
 
-        Event::listen(['eloquent.restored: *'], function($event, $model) {
-            Activity::logModel('restored', $model[0]);
-        });
+        Event::listen(
+            ['eloquent.restored: *'], function ($event, $model) {
+                Activity::logModel('restored', $model[0]);
+            }
+        );
 
         \Cron::command('Purge activity', 'activity:purge')->daily();
     }
@@ -52,10 +60,13 @@ class ActivityServiceProvider extends ModuleServiceProvider
         $this->app->bind('activity', \Pingu\Activity\Components\Activity::class);
     }
 
-    public function registerCommands(){
-        $this->commands([
+    public function registerCommands()
+    {
+        $this->commands(
+            [
             PurgeActivity::class
-        ]);
+            ]
+        );
     }
 
     /**

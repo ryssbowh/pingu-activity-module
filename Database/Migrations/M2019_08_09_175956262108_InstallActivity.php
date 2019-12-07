@@ -13,18 +13,20 @@ class M2019_08_09_175956262108_InstallActivity extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('action');
-            $table->text('message');
-            $table->string('object');
-            $table->string('key');
-            $table->text('from');
-            $table->text('to');
-            $table->integer('user_id')->unsigned()->index()->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
-            $table->timestamps();
-        });
+        Schema::create(
+            'activities', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('action');
+                $table->text('message');
+                $table->string('object');
+                $table->string('key');
+                $table->text('from');
+                $table->text('to');
+                $table->integer('user_id')->unsigned()->index()->nullable();
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+                $table->timestamps();
+            }
+        );
     }
 
     /**
