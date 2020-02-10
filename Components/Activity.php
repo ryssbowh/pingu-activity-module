@@ -36,8 +36,6 @@ class Activity
 
     public function logModel(string $action, Model $model): ?ActivityModel
     {
-        \Log::debug($model);
-        \Log::debug($this->shouldLogModel($model));
         if ($this->shouldLogModel($model)) {
             return $this->log(
                 $this->getModelMessage($action, $model),

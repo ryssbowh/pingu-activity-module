@@ -79,6 +79,9 @@ class ActivityServiceProvider extends ModuleServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../Config/config.php', 'activity'
         );
+        $this->publishes([
+            __DIR__.'/../Config/config.php' => config_path('module-activity.php')
+        ], 'config');
     }
 
     /**
