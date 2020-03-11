@@ -80,8 +80,8 @@ class ActivityServiceProvider extends ModuleServiceProvider
             __DIR__.'/../Config/config.php', 'activity'
         );
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('module-activity.php')
-        ], 'config');
+            __DIR__.'/../Config/config.php' => config_path('activity.php')
+        ], 'activity-config');
     }
 
     /**
