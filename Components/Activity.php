@@ -40,8 +40,8 @@ class Activity
             return $this->log(
                 $this->getModelMessage($action, $model),
                 $action,
-                json_encode($model->getAllOriginal()),
-                json_encode($model->getAllAttributes()),
+                json_encode($model->getOriginal()),
+                json_encode($model->getAttributes()),
                 get_class($model),
                 $model->getKey()
             );
